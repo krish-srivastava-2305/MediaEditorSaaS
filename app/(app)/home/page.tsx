@@ -13,7 +13,6 @@ function Home() {
             const response = await axios.get("/api/videos")
             if(response.data) {
                 setVideos(response.data.videos)
-                console.log(videos)
             } else {
                 throw new Error(" Unexpected response format");
 
