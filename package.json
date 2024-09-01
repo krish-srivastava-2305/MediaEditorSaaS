@@ -12,7 +12,11 @@
     "@clerk/nextjs": "^5.3.7",
     "@prisma/client": "^5.19.0",
     "cloudinary": "^2.4.0",
+    "dayjs": "^1.11.13",
+    "filesize": "^10.1.4",
+    "lucide-react": "^0.437.0",
     "next": "14.2.7",
+    "next-cloudinary": "^6.11.0",
     "react": "^18",
     "react-dom": "^18"
   },

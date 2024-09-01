@@ -21,7 +21,7 @@ interface CloudinaryResponse {
 export const POST = async (req: NextRequest) => {
     const {userId} = auth()
     if(!userId) return NextResponse.json({error: "User not authorized!"}, {status: 401})
-
+        
     try {
         const formData = await req.formData()
 
@@ -36,21 +36,21 @@ export const POST = async (req: NextRequest) => {
         const buffer = Buffer.from(bytes)
 
         const result = await new Promise<CloudinaryResponse>(
-            (resolve,  reject) => {
-                const upload_stream = cloudinary.uploader.upload_stream(
+            (resolve, reject) => {
+                const uploadStream = cloudinary.uploader.upload_stream(
                     {
-                        folder: "media-editor-saas",
                         resource_type: "video",
+                        folder: "video-uploads",
                         transformation: [
                             {quality: "auto", fetch_format: "mp4"},
                         ]
                     },
                     (error, result) => {
                         if(error) reject(error);
-                        else resolve(result as CloudinaryResponse)
-                    }   
-            )
-            upload_stream.end()
+                        else resolve(result as CloudinaryResponse);
+                    }
+                )
+                uploadStream.end(buffer)
             }
         )
 
